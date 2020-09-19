@@ -2,47 +2,64 @@ package client;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.VBox;
+import javafx.geometry.Pos;
+import javafx.scene.*;
+import javafx.scene.control.*;
+import javafx.scene.layout.*;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.Socket;
+
 public class ClientApp extends Application {
+    Label labelTitle = new Label("Client Chat");
+    public static TextArea message = new TextArea();
+    public static TextField input = new TextField();
+    Button buttonSend = new Button("send");
+
 
     @Override
     public void start(Stage primaryStage) throws Exception{
        // Parent root = FXMLLoader.load(getClass().getResource("client.fxml"));
+        
+//        ControllerClient
+        ControllerClient controller = null;
+
+//        Label
+        labelTitle.setFont(new Font ("Arial", 34));
 
 
+//       TextArea
+        message.setPrefHeight(150);
 
 //       TextField
-        TextArea message = new TextArea();
-        message.setPrefHeight(200);
+        input.setPrefWidth(350);
 
+//        Button
+        buttonSend.setPrefWidth(50);
+        buttonSend.setOnAction(event -> {ControllerClient.sendMessage();});
 
-//       TextField
-        TextField input = new TextField();
-        input.setOnAction(event -> ControllerClient.sendMessage( message, input));
+//        HBox
+        HBox hBox = new HBox();
+        hBox.getChildren().addAll(input, buttonSend);
 
 
 //        VBox
-        VBox root = new VBox(20, message);
+        VBox root = new VBox(20);
         root.setStyle("-fx-background-color:#282C34");
         root.setPrefSize(400, 400);
+        root.getChildren().addAll(labelTitle, message, hBox);
+        root.setAlignment(Pos.TOP_CENTER);
 
 //        Scene
-        primaryStage.setTitle("Server");
+        primaryStage.setTitle("Client");
         Scene scene = new Scene(root);
 
 //        Stage
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
-        primaryStage.show();
-
-        primaryStage.setTitle("Client");
-        primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }
 
@@ -50,4 +67,16 @@ public class ClientApp extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+
+
+
+
+
+
+
+
+
+
+
+
 }

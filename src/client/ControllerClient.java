@@ -9,10 +9,14 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+class ControllerClient {
 
-public class ControllerClient {
-    static public void sendMessage(TextArea area, TextField input){
-        //coloca en el area del cliente que mando el mensaje
-        //limpia el input
+    public static void sendMessage(){
+        System.out.println("Funciono");
+//        Client c = new Client();
     }
+
+
 }
+
+
