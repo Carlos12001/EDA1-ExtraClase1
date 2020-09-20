@@ -5,17 +5,19 @@ import java.io.IOException;
 import java.net.Socket;
 
 class Client {
-    Client(){
+    Client(String text){
         try {
-            Socket socket = new Socket("192.168.100.32", 6000);
+            Socket socket = new Socket("127.0.0.1", 6000);
 
             DataOutputStream out = new DataOutputStream(socket.getOutputStream());
 
-            out.writeUTF(ClientApp.input.getAccessibleText());
+            out.writeUTF(text);
+
+            socket.close();
 
         } catch (IOException e) {
             e.printStackTrace();
-            System.out.println("El error es :" + e.getMessage());
         }
+
     }
 }

@@ -1,7 +1,6 @@
 package client;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.*;
 import javafx.scene.control.*;
@@ -9,11 +8,10 @@ import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.net.Socket;
 
 public class ClientApp extends Application {
+
+
     Label labelTitle = new Label("Client Chat");
     public static TextArea message = new TextArea();
     public static TextField input = new TextField();
@@ -21,18 +19,18 @@ public class ClientApp extends Application {
 
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) {
        // Parent root = FXMLLoader.load(getClass().getResource("client.fxml"));
-        
-//        ControllerClient
-        ControllerClient controller = null;
 
 //        Label
-        labelTitle.setFont(new Font ("Arial", 34));
+        labelTitle.setStyle("-fx-text-fill: #1fdece; -fx-font-size: 36px; -fx-font-family: Arial");
 
 
 //       TextArea
         message.setPrefHeight(150);
+        message.setStyle("-fx-font-family: Arial;-fx-font-size: 14px ");
+        message.setDisable(true);
+
 
 //       TextField
         input.setPrefWidth(350);
