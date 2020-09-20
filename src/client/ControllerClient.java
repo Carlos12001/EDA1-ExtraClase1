@@ -5,11 +5,11 @@ import javafx.scene.control.*;
 
 class ControllerClient {
 
-    public static void sendMessage(Client client, TextField input, TextArea message ){
+    public static void sendMessage(ClientObject clientObject, TextField input, TextArea message ){
 
         String text = input.getText() ;
 
-        client.sendMessageAction(text);
+        clientObject.sendMessageAction(text);
 
         message.appendText("You: "+ text + "\n");
 
@@ -17,9 +17,9 @@ class ControllerClient {
         System.out.println();
     }
 
-    public  static void saveNewConfig(Client client, TextField ip, TextField puerto ){
-        client.setIp(ip.getText());
-        client.setPuerto(Integer.parseInt(puerto.getText()));
+    public  static void saveNewConfig(ClientObject clientObject, TextField ip, TextField puerto ){
+        clientObject.setIp(ip.getText());
+        clientObject.setPuerto(Integer.parseInt(puerto.getText()));
     }
 
 
