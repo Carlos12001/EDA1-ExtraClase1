@@ -1,18 +1,25 @@
 package client;
 
 
+import javafx.scene.control.*;
+
 class ControllerClient {
 
-    public static void sendMessage(){
+    public static void sendMessage(Client client, TextField input, TextArea message ){
 
-        String text = ClientApp.input.getText() ;
+        String text = input.getText() ;
 
-        new Client(text);
+        client.sendMessageAction(text);
 
-        ClientApp.message.appendText(text+"\n");
+        message.appendText("You: "+ text + "\n");
 
-        ClientApp.input.clear();
+        input.clear();
         System.out.println();
+    }
+
+    public  static void saveNewConfig(Client client, TextField ip, TextField puerto ){
+        client.setIp(ip.getText());
+        client.setPuerto(Integer.parseInt(puerto.getText()));
     }
 
 

@@ -2,16 +2,29 @@ package client;
 
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 class Client {
-    Client(String text){
+    private String nick,ip, text;
+    int puerto;
+
+    public Client(String nick, String ip, int puerto) {
+        this.nick = nick;
+        this.ip = ip;
+        this.puerto = puerto;
+    }
+
+
+    public void sendMessageAction(String text){
+        this.text = text;
         try {
-            Socket socket = new Socket("127.0.0.1", 6000);
+            Socket socket = new Socket(ip, puerto);
 
-            DataOutputStream out = new DataOutputStream(socket.getOutputStream());
+            ObjectOutputStream paquete =  new ObjectOutputStream(socket.getOutputStream());
 
-            out.writeUTF(text);
+            paquete.writeObject(this);
 
             socket.close();
 
@@ -20,4 +33,32 @@ class Client {
         }
 
     }
+
+
+    public void setIp(String ip) {
+        this.ip = ip;
+    }
+
+    public void setPuerto(int puerto) {
+        this.puerto = puerto;
+    }
+
+    public String getIp() {
+        return ip;
+    }
+
+    public int getPuerto() {
+        return puerto;
+    }
+
+    public String getNick() {
+        return nick;
+    }
+
+    public String getText() {
+        String oldtext = this.text;
+        //this.text = "";
+        return oldtext;
+    }
 }
+

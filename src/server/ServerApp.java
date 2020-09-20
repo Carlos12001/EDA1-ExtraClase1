@@ -5,7 +5,6 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import java.io.DataInputStream;
@@ -31,7 +30,10 @@ public class ServerApp extends Application implements Runnable{
 
 //       TextArea
         message.setPrefHeight(150);
-        message.setDisable(true);
+        message.setStyle("-fx-font-family: " +
+                "Arial;-fx-font-size: 14px; " +
+                "-fx-control-inner-background:#333b33");
+        message.setEditable(false);
 
 //        VBox
         VBox root = new VBox(20);
