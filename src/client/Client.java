@@ -14,28 +14,31 @@ import java.net.Socket;
 
 public class Client implements Runnable {
 
-    private  Stage primaryStage = new Stage();
-    private Label labelTitle = new Label("ClientObject Chat");
+    private int  clientNumber = 1;
+    private Stage primaryStage = new Stage();
+    private Label labelTitle = new Label();
     private TextArea message = new TextArea();
     private TextField input = new TextField();
     private Button buttonSave = new Button("Save");
     private Button buttonSend = new Button("send");
-    private TextField textFieldNick, textFieldIp, textFieldPuerto;
+    private TextField textFieldIp;
+    private TextField textFieldPuerto;
     private ClientObject theClientObject = new ClientObject("Nickname","127.0.0.1", 6000);
 
     public Client(String name, String ip, int puerto){
         this.theClientObject = new ClientObject(name, ip, puerto);
         display();
-        new Thread(this::run).start();
+        this.clientNumber ++;
+        Thread t =new Thread(this);
+        t.start();
+
     }
-
-
-
 
     public void display() {
        // Parent root = FXMLLoader.load(getClass().getResource("client.fxml"));
 
 //        Label
+        labelTitle.setText("Client " + this.clientNumber);
         labelTitle.setStyle("-fx-text-fill: #1fdece; -fx-font-size: 36px; -fx-font-family: Arial");
 
 
@@ -49,7 +52,7 @@ public class Client implements Runnable {
 //       TextField
         input.setPrefWidth(350);
 
-        textFieldNick = new TextField(theClientObject.getNick());
+        TextField textFieldNick = new TextField(theClientObject.getNick());
         textFieldNick.setPromptText("nickname");
         textFieldNick.setDisable(true);
 
@@ -86,7 +89,7 @@ public class Client implements Runnable {
         root.setAlignment(Pos.TOP_CENTER);
 
 //        Scene
-        primaryStage.setTitle("ClientObject");
+        primaryStage.setTitle("Client " + this.clientNumber);
         Scene scene = new Scene(root);
 
 //        Stage
@@ -96,7 +99,6 @@ public class Client implements Runnable {
 
 
     }
-
 
     @Override
     public void run() {

@@ -6,34 +6,24 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPaneServer" prefHeight="300.0" prefWidth="400.0" style="-fx-background-color: #282C34;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample1.MainController">
+<AnchorPane fx:id="anchorPaneServerClient" prefHeight="250.0" prefWidth="350.0" style="-fx-background-color: #282C34;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample1.MainController">
    <children>
-      <Label fx:id="labelTittle1" alignment="TOP_CENTER" layoutX="141.0" layoutY="14.0" prefHeight="44.0" prefWidth="119.0" text="Server" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+      <Label fx:id="labelTittle1" alignment="TOP_CENTER" layoutX="115.0" layoutY="17.0" prefHeight="44.0" prefWidth="119.0" text="Server" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>
             <Font name="Times New Roman" size="32.0" />
          </font>
       </Label>
-      <Label fx:id="labelTittle2" alignment="TOP_CENTER" layoutX="90.0" layoutY="58.0" prefHeight="44.0" prefWidth="220.0" text="Configuración" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+      <Label fx:id="labelTittle2" alignment="TOP_CENTER" layoutX="65.0" layoutY="61.0" prefHeight="44.0" prefWidth="220.0" text="Configuración" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>
             <Font name="Times New Roman" size="32.0" />
          </font>
       </Label>
-      <Label fx:id="labelIp" layoutX="22.0" layoutY="140.0" text="Ip" textFill="WHITE">
+      <Label fx:id="labelPuerto" layoutX="151.0" layoutY="125.0" text="Puerto" textFill="WHITE">
          <font>
             <Font name="Times New Roman" size="18.0" />
          </font>
       </Label>
-      <Label fx:id="labelPuerto" layoutX="6.0" layoutY="200.0" text="Puerto" textFill="WHITE">
-         <font>
-            <Font name="Times New Roman" size="18.0" />
-         </font>
-      </Label>
-      <TextField fx:id="textFieldIp" layoutX="71.0" layoutY="138.0" prefHeight="25.0" prefWidth="175.0">
-         <font>
-            <Font name="Times New Roman" size="12.0" />
-         </font>
-      </TextField>
-      <TextField fx:id="textFieldPuerto" layoutX="71.0" layoutY="197.0" prefHeight="25.0" prefWidth="175.0" />
-      <Button fx:id="buttonSaveServer" layoutX="296.0" layoutY="241.0" mnemonicParsing="false" onAction="#saveServer" style="fx-border-width: 2; -fx-background-color: #1d1d1d; -fx-font-family: &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif; -fx-font-size: 14; -fx-text-fill: #d8d8d8; -fx-padding: 5 22 5 22;; -fx-background-radius: 0;" text="Save" />
+      <TextField fx:id="textFieldPuerto" layoutX="87.0" layoutY="155.0" prefHeight="25.0" prefWidth="175.0" />
+      <Button fx:id="buttonSaveServer" layoutX="138.0" layoutY="206.0" mnemonicParsing="false" onAction="#saveServer" style="fx-border-width: 2; -fx-background-color: #1d1d1d; -fx-font-family: &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif; -fx-font-size: 14; -fx-text-fill: #d8d8d8; -fx-padding: 5 22 5 22;; -fx-background-radius: 0;" text="Save" />
    </children>
 </AnchorPane>
