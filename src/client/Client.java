@@ -14,7 +14,7 @@ import java.net.Socket;
 
 public class Client implements Runnable {
 
-    private int  clientNumber = 1;
+    static private int  clientNumber = 1;
     private Stage primaryStage = new Stage();
     private Label labelTitle = new Label();
     private TextArea message = new TextArea();
@@ -53,25 +53,19 @@ public class Client implements Runnable {
         input.setPrefWidth(350);
 
         TextField textFieldNick = new TextField(theClientObject.getNick());
-        textFieldNick.setPromptText("nickname");
-        textFieldNick.setDisable(true);
+        message.setEditable(false);
 
         textFieldIp = new TextField(theClientObject.getIp());
-        textFieldIp.setPromptText("your ip");
+        message.setEditable(false);
 
         textFieldPuerto = new TextField(String.valueOf(theClientObject.getPuerto()));
-        textFieldPuerto.setPromptText("puerto");
+        message.setEditable(false);
 
 //        Button
         buttonSend.setPrefWidth(50);
         buttonSend.setOnAction(event -> {
             ControllerClient.sendMessage(theClientObject, input, message);
         });
-
-        buttonSave.setOnAction(event -> {
-            ControllerClient.saveNewConfig(theClientObject, textFieldIp, textFieldPuerto);
-        });
-
 //        HBox
         HBox hBox1 = new HBox();
         hBox1.getChildren().addAll(textFieldNick, textFieldIp, textFieldPuerto);
@@ -118,6 +112,8 @@ public class Client implements Runnable {
             }
         } catch (IOException e) {
             e.printStackTrace();
+            System.out.println("Aqui mame en run del cliente " + clientNumber);
+            System.out.println("\n\n\n");
         }
 
     }

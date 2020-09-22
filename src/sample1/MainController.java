@@ -1,6 +1,8 @@
 package sample1;
 
 import client.Client;
+import client.ClientObject;
+import javafx.beans.property.ReadOnlyBooleanProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,16 +12,23 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import server.Server;
 
+import javax.swing.*;
 import java.io.IOException;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.util.ArrayList;
 
 public class MainController {
-
 
 
     //Server ATTRIBUTES
 
     @FXML
     private TextField textFieldPuerto;
+
+    public Server THESERVER;
+
+    public ArrayList<ClientObject> ListClients = new ArrayList<ClientObject>();
 
     //Client ATTRIBUTES
 
@@ -33,52 +42,65 @@ public class MainController {
     private TextField textFieldNickNameC;
 
 
-
-
-
 //    Create the Server
     @FXML
     void saveServer(ActionEvent event) {
+        try {
+            textFieldIpC.setText(InetAddress.getLocalHost().getHostAddress());
+                textFieldIpC.setEditable(false);
 
-        try{
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        }
+
+        try {
             int puertoServer = Integer.parseInt(textFieldPuerto.getText());
             if (puertoServer >= 5000) {
+               
                 try {
-                    new Server(puertoServer);
+                    this.THESERVER = new Server(puertoServer);
+                    
+                    
+//                    The new Root
                     Parent root = FXMLLoader.load(getClass().getResource("MainView2.fxml"));
                     MainApp.primaryStage.setTitle("Chat Sockets");
                     MainApp.primaryStage.setScene(new Scene(root));
                     MainApp.primaryStage.show();
+                    
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
-        }catch (NumberFormatException ex){
-            System.out.println("Digita numero enteros");
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(null, "Error de puerto digita otro");
         }
     }
 
-//    Create the Client
+    //    Create the Client
     @FXML
     void createClient(ActionEvent event) {
 
-        System.out.println("cliente creado");
+        System.out.println("cliente creado\n\n\n");
 
 //
-//        try {
+        try {
             int puertoClient = Integer.parseInt(textFieldPuertoC.getText());
-            if (puertoClient >= 5000) {
-                System.out.println(textFieldNickNameC.getText());
-                System.out.println(textFieldIpC.getText());
-                System.out.println(puertoClient);
 
+            boolean equalOtherPorts = false;
+
+
+
+            if (puertoClient >= 5000 && !equalOtherPorts ) {
                 new Client(textFieldNickNameC.getText(), textFieldIpC.getText(), puertoClient);
             }
-//        }catch (NumberFormatException ex){
-//            System.out.println("Digita numero enteros en el puerto");
-//        }catch (Exception ex){
-//            System.out.println("algo hiciste mal");
-//        }
-    }
 
+        } catch (NumberFormatException ex) {
+            ex.printStackTrace();
+            System.out.println("Error de numero");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
 }
+
+

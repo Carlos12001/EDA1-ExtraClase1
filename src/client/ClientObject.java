@@ -4,7 +4,7 @@ import java.io.*;
 import java.net.Socket;
 
 public class ClientObject implements Serializable {
-    private String nick,ip, text;
+    private String nick, ip, text;
     int puerto;
 
     public ClientObject(String nick, String ip, int puerto) {
@@ -14,10 +14,10 @@ public class ClientObject implements Serializable {
     }
 
 
-    public void sendMessageAction(String text){
+    public void sendMessageAction(String text){//String puerto){
         this.text = text;
         try {
-            Socket socket = new Socket(ip, puerto);
+            Socket socket = new Socket(this.ip, this.puerto);
 
             ObjectOutputStream paquete =  new ObjectOutputStream(socket.getOutputStream());
 
@@ -27,6 +27,7 @@ public class ClientObject implements Serializable {
 
         } catch (IOException e) {
             e.printStackTrace();
+            System.out.println(this.nick + " el no pudo mandar el mensaje. ");
         }
 
     }

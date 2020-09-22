@@ -17,11 +17,6 @@ class ControllerClient {
         System.out.println();
     }
 
-    public  static void saveNewConfig(ClientObject clientObject, TextField ip, TextField puerto ){
-        clientObject.setIp(ip.getText());
-        clientObject.setPuerto(Integer.parseInt(puerto.getText()));
-    }
-
 
 }
 
