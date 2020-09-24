@@ -10,7 +10,7 @@ Para correr el pograma primero se tiene correr el archivo Server que se encuentr
 Para poder chatear en el con otra persona servidor se tiene primero correr Client, esta se encuentra en scr>client>ClientApp.java. Ejecute las varias veces el archivo el client, para abrir mas chats de clientes.
 
 ## Funcionamiento
-Para mandar mensajes entre clientes, se debe escribir algo en la parte de abajo y para mandarlo presiona el boton de Send.Para que los demás clientes reciban el mensaje, tienen que presionar el boton send tamnièn ellos.
+Para mandar mensajes entre clientes, se debe escribir algo en la parte de abajo y para mandarlo presiona el boton de Send.Para que los demás clientes reciban el mensaje, tienen que presionar el boton send tambien ellos.
 
 ## Contacto
 Si presenta algun problema con el programa por favor al carlos.andres12001@gmail.com.
