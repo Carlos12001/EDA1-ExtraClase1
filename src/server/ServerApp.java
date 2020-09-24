@@ -20,9 +20,6 @@ public class ServerApp extends Application implements Runnable{
 
     private Label labelTitle = new Label("Server Chat");
     static TextArea message = new TextArea();
-    private Socket socketlist[] = new Socket[10000];
-    private int num = 0;
-
 
     @Override
     public void start(Stage primaryStage) {
@@ -71,18 +68,13 @@ public class ServerApp extends Application implements Runnable{
 
                 Socket socket = serverSocket.accept();
 
-//                socketlist[num] = socket;
-//                int i = 0;
-//                num++;
-//                while(num!=i){
+
                 DataInputStream inputStream = new DataInputStream(socket.getInputStream());
 
                 String text = inputStream.readUTF();
 
                 message.appendText(text + "\n");//parte grafica
 
-//                    i++;
-//                }\
                 DataOutputStream out = null;
                 out = new DataOutputStream(socket.getOutputStream());
                 out.writeUTF(message.getText());
