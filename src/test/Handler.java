@@ -1,4 +1,4 @@
-package exception;
+package test;
 
 public class Handler {
     Handler()

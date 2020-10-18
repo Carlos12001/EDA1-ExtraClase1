@@ -21,6 +21,7 @@ import org.apache.log4j.SimpleLayout;
 import org.apache.log4j.PatternLayout;
 
 
+
 public class ServerApp extends Application implements Runnable{
 
     private Label labelTitle = new Label("Server Chat");
